@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    {% include 'cdnlines.html' %}
+    <title>Your Page Title</title>
+  </head>
+  <style>
+    input {
+      margin-top: 5px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-4 col-md-4">
+          <h4 class="text-center">Enter Students Details Here!!</h4>
+          <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="fname" class="form-control" placeholder="Enter First Name">
+            <input type="text" name="lname"  class="form-control" placeholder="Enter last name">
+            <input type="text" name="cname"  class="form-control" placeholder="Enter Course">
+            <input type="text" name="fee" class="form-control" placeholder="Enter fee">
+            <input type="text" name="iname"  class="form-control" placeholder=" Enter Institute name">
+            <input type="text" name="mobile"  class="form-control" placeholder=" Enter Mobile">
+            <input type="text" name="email"  class="form-control" placeholder="Enter Email ID">
+            <input type="text" name="a1"  class="form-control" placeholder="a1">
+            <input type="text" name="a2"  class="form-control" placeholder="a2">
+            <input type="text" name="a3"  class="form-control" placeholder="a3">
+            <input type="text" name="a4"  class="form-control" placeholder="a4">
+            <input type="text" name="loc"  class="form-control" placeholder=" Enter location">
+
+            <div class="text-center">
+              <input type="submit" value="Add" class="btn btn-outline-success">
+              <input type="reset" value="CLEAR" class="btn btn-outline-danger"> <br>
+              <a href="{% url 'indexpage' %}" class="btn btn-primary mt-1">Goto Main page</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
