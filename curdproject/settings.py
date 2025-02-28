@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-43shu@fr8h!w6euhdu534xqj#&#)#=bi+p-%s2%2@ac3gu$5u+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -123,3 +123,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+import dj_database_url
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Middleware for serving static files
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
+    ...
+]
+
+# Use Render's PostgreSQL Database
+DATABASES = {
+    "default": dj_database_url.config(default="sqlite:///db.sqlite3")
+}
+
+# Ensure Whitenoise is used
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
